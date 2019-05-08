@@ -178,7 +178,9 @@
             
           </div>
           <div class="row">
-            <div id="graph"></div>
+            <div class="col-md-12">
+              <div id="graph"></div>
+            </div>
           </div>
         </div>
       </div>
