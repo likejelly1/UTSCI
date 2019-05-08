@@ -7,14 +7,17 @@ class Dashboard extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('status') != 'login') {
 		    	return redirect('/login');
-		    }
+        }
+        $this->load->model('Transaksi');
     }
 	public function index()
 	{
-		$this->load->view('dashboard');
+    $data['transaksi'] = json_encode($this->Transaksi->getSumTransaksi());
+		$this->load->view('dashboard',$data);
   }
     // public function data()
     // {
     //     $this->load->view('table_data');
     // }
+
 }

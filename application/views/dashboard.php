@@ -178,23 +178,7 @@
             
           </div>
           <div class="row">
-            <div class="col-md-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-warning">
-                  <div class="ct-chart" id="dailySalesChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Daily Sales</h4>
-                  <p class="card-category">
-                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> updated 4 minutes ago
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div id="graph"></div>
           </div>
         </div>
       </div>
@@ -279,36 +263,17 @@
   <script src="<?php echo base_url()?>assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?php echo base_url()?>assets/demo/demo.js"></script>
+  <script src="<?php echo base_url().'assets/js/raphael.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/js/morris.min.js'?>"></script>
   
   <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      dataDailySalesChart = {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-        series: [
-          [12, 17, 7, 17, 23, 18, 38]
-        ]
-      };
-
-      optionsDailySalesChart = {
-        lineSmooth: Chartist.Interpolation.cardinal({
-          tension: 10
-        }),
-        low: 0,
-        high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-        chartPadding: {
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0
-        },
-      }
-
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-
-      md.startAnimationForLineChart(dailySalesChart);
-
-    });
+      Morris.Line({
+          element: 'graph',
+          data: <?php echo $transaksi?>,
+          xkey: ['year'],
+          ykeys: ['stok'],
+          labels: ['Stok Masuk']
+        });
   </script>
 </body>
 

@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     public function index()
     {
         $config['base_url'] = site_url('BarangController/index');
-        $config['total_rows'] = $this->db->count_all('transaksi');
+        $config['total_rows'] = $this->db->count_all('barang');
         $config['per_page'] = 5;
         $config['uri_segment'] = 3;
         $jumlah_pilihan = $config['total_rows'] / $config['per_page'];
@@ -47,11 +47,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         $data['page'] =  ($this->uri->segment(3)) ? $this->uri->segment(3) : 0 ;
 
-        $data['item'] = $this->Transaksi->getTransaksiWithLimit($config['per_page'], $data['page']);
+        $data['item'] = $this->Barang->getBarangWithLimit($config['per_page'], $data['page']);
         $data['pagination'] = $this->pagination->create_links();
         
-        //  $data["barang"] = $this->Barang->getBarang();
-         $this->load->view("table_data", $data);
+        $this->load->view("table_data", $data);
     }
     public function create()
     {
@@ -73,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     public function edit($id)
     {
-        $data['barang'] = $this->Barang->getBarangById($Id);
+        $data['product'] = $this->Barang->getBarangById($id)->result();
 
         $this->load->view('barang/edit_barang', $data);
     }

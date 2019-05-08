@@ -132,16 +132,13 @@
                     <table class="table text-center">
                       <thead class=" text-primary">
                         <th>
-                          ID_transaksi
-                        </th>
-                        <th>
                           Id Barang
                         </th>
                         <th>
-                          Stok Masuk
+                          Stok
                         </th>
                         <th>
-                          Tahun Masuk Barang
+                          Jumlah_barang
                         </th>
                         <th>
                           Actions
@@ -152,20 +149,17 @@
                       ?>
                         <tr>
                           <td>
-                            <?php echo $key->id;?>
+                            <?php echo $key->id_barang;?>
                           </td>
                           <td>
-                            <?php echo $key->id_barang?>
+                            <?php echo $key->nama_barang;?>
                           </td>
                           <td>
-                            <?php echo $key->stok_masuk?>
-                          </td>
-                          <td>
-                            <?php echo $key->year?>
+                            <?php echo $key->stok;?>
                           </td>
                           <td class="text-primary">
-                            <a href="#" class="btn btn-warning">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="<?php echo base_url()?>/barangcontroller/edit/<?php echo $key->id_barang;?>" class="btn btn-warning">Edit</a>
+                            <a href="<?php echo base_url()?>/barangcontroller/delete<?php echo $key->id_barang?>" class="btn btn-danger">Delete</a>
 
                           </td>
                         </tr>

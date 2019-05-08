@@ -2,7 +2,7 @@
 
 class Barang extends CI_Model
 {
-    private $_table = "transaksi";
+    private $_table = "barang";
 
     public $id_barang;
     public $nama_barang;
@@ -32,7 +32,7 @@ class Barang extends CI_Model
     
     public function getBarangById($id)
     {
-        return $this->db->get_where($this->_table, ["id_barang" => $id])->row();
+        return $this->db->get_where($this->_table, ["id_barang" => $id]);
     }
 
     public function save()
